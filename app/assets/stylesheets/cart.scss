@@ -1,7 +1,10 @@
 .cart-show {
   tr div {
     width: max-content;
+    
   }
+
+  
 
   button.stripe-button-el span {
     border-radius: 0.25em;
@@ -10,3 +13,11 @@
     color: white;
   }
 }
+
+.cart-noshow {
+  
+    width: max-content;
+    align-items: center;
+  }
+
+  
