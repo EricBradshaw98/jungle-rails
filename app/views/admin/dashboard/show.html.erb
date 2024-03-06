@@ -1,2 +1,24 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<h1>Admin:Dashboard</h1>
+<section class="admin-products-index">
+
+ 
+
+  
+
+  <div class="panel panel-default products">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+        <th colspan="2">Product Count: <%= link_to Product.count, "http://localhost:3000/admin/products" %> </th>
+        <th>Category Count: <%= link_to Category.count, "http://localhost:3000/" %> </th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+
+  </div>
+
+</section>
