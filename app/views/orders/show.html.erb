@@ -1,13 +1,45 @@
 <section class="orders-show">
-
   <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
+    <h1>Order <%= @order.id %></h1>
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <div class="panel panel-default items">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+          <th>Image</th>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.line_items.each do |line_item| %>
+            <tr>
+            <td><%= image_tag line_item.product.image.thumb.url, alt: line_item.product.name %></td>
+              <td><%= line_item.product.name %></td>
+              <td><%= line_item.product.description %></td>
+              <td><%= line_item.quantity %></td>
+              <td><%= humanized_money_with_symbol line_item.item_price %></td>
+              <td><%= humanized_money_with_symbol line_item.total_price %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>TOTAL: <%= humanized_money_with_symbol @order.total_cents / 100.0 %></th>
+            
+          </tr>
+          <tr>
+            <th>Email: <%= @order.email %></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
-
 </section>

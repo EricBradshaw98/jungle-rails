@@ -52,8 +52,11 @@
   </section>
 <% end %>
 
+<% if !enhanced_cart.present? %>
 <section class="cart-noshow">
     <header class="page-header">
       <h1> You need to leave, Alan. </h1>
       <a href="http://localhost:3000/">Click here to go back.</a>
     </header>
+
+    <% end %>
