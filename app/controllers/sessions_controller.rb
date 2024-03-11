@@ -12,9 +12,22 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
     # If user's login doesn't work, send them back to the login form.
-      redirect_to '/login'
+    flash.now[:alert] = 'Invalid email or password'
+    render 'new'
     end
   end
+
+  def create_with_custom_authentication
+    if user = User.authenticate_with_credentials(params[:email], params[:password])
+      # Success logic, log them in
+      session[:user_id] = user.id
+      redirect_to '/'
+    else
+      # Failure, render login form
+      flash.now[:alert] = 'Invalid email or password'
+      render 'new'
+    end
+end
 
   def destroy
     session[:user_id] = nil
