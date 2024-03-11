@@ -4,9 +4,16 @@ Rails.application.routes.draw do
   get 'test/index'
   root to: 'products#index'
 
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+  
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
   resources :products, only: [:index, :show]
   resources :categories, only: [:show]
-  resources :users, only: [:show]
+  resources :users
 
   resource :cart, only: [:show] do
     post   :add_item

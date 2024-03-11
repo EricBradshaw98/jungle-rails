@@ -1,0 +1,42 @@
+<section class="admin-products-index">
+
+<header class="page-header">
+<h1> &raquo; Account Login</h1>
+</header>
+
+ 
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_for :user, url:'/users' do |form| %>
+
+
+        
+
+      
+        
+        <div class="form-group">
+          <%= form.label :email %>
+          <%= form.text_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+    <%= form.label :password, "Password" %>
+    <%= form.password_field :password, class: 'form-control' %>
+  </div>
+
+  
+
+        
+
+        
+  <div>
+        <%= form.submit 'Login', class: 'btn btn-primary' %>
+        </div>
+        
+      <% end %>
+      <div class="well">
+      <%= link_to '+ New User? Click here.', new_user_path, class: 'btn btn-info' %>
+    </div>
+</section>
